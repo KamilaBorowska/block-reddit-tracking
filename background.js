@@ -17,12 +17,11 @@
  */
 
 function blockTracking(details) {
-    console.log(details)
     if (!details.requestBody) {
         return
     }
     const decoded = new TextDecoder("utf-8").decode(details.requestBody.raw[0].bytes)
-    if (['[', '{"1":', '{"time":'].some(start => decoded.startsWith(start))) {
+    if (['{"1":', '{"id":"2c3efcfc2552"'].some(start => decoded.startsWith(start))) {
         return { cancel: true }
     }
 }
